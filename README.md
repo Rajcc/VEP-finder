@@ -1,6 +1,5 @@
 
-This is a Bioinformatics website Which gives information VEP of known and unknown gene sequence .it uses clinVar,ensemble and NCBI APIs.
-it gives a comprehensive base variation and VEP of unknown sequence which is achieved by hardcoded algorithm.
+
 
 
 <h3 align="left">Languages and Tools:</h3>
