@@ -1,0 +1,10 @@
+flask
+gunicorn
+import requests 
+import re
+from flask import Flask
+from flask import render_template,request
+import time
+from Bio.Blast import NCBIXML
+from io import StringIO
+import io
