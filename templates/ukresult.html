@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+    .resultbox{
+      margin: 30px 0px 30px 30px;
+      width: 90%;
+      max-width: 1000px;
+      background-color: rgba(126, 118, 126, 0);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: left;
+      font-size: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: auto;
+      word-wrap: break-word;
+      white-space: pre;
+      font-family: monospace;
+      border:3px solid black;
+
+        }
+     .container1{
+      background-color: rgba(74, 190, 136, 0.692);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size:large;
+      width: 100vw;
+      height: 80px;
+      align-items: center;
+      justify-content: center;
+
+    }
+        table {
+      margin: 15px 0;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 6px 10px;
+      text-align: center;
+    }
+    .output-box {
+      display:flex;
+  border: 3px solid black;
+   margin: 20px auto 10px auto;
+  padding: 6px;
+  margin-bottom: 10px;
+  /* width: fit-content; */
+  font-family: Arial, sans-serif;
+  border-radius: 15px;
+  background-color: aliceblue;
+  margin-top: 20px;
+  width:500px;
+  font-size: 30;
+  height:50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.textarea-box {
+  border: 3px solid black;
+  padding: 10px;
+  width: fit-content;
+  display: inline-block;
+  border-radius: 15px;
+  width:100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+    
+    </style>
+</head>
+<body>
+  <div class="container1">
+    <Header>
+    <h1 style="color:#f6f7f6"> Gene Variant Finder</h1>
+  </Header>
+  </div>
+  <div class="output-box">
+     <h2>Result:</h2>
+     </div>
+     <div class="textarea-box">
+     <h4>Best Hit</h4>
+     </div>
+     <div class="resultbox">
+        <pre>{{blast_output|safe}}</pre>
+     {% if Mutagen %}
+     <h3>Detected Variation in Base Pairs</h3>
+     <table Border="1" cellpadding="6">
+         <tr><th>Type</th><th>Position</th><th>Query</th><th>Subject</th><th>Variation kind</th></tr>
+         <tbody>
+            {% for m in Mutagen %}
+            <tr>
+                <td>{{ m.Type }}</td>
+                <td>{{ m.Position }}</td>
+                <td>{{ m['Query Base'] }}</td>
+                <td>{{ m['Subject Base'] }}</td>
+                <td>{{ m['Variation kind'] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+     </table>
+     {% else %}
+     <p>No Variation in Base Pairs Detected</p>
+     {% endif %}
+    </div>
+        
+    
+</body>
+</html>

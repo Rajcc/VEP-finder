@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .error-box {
+            background-color: #ffcccc;
+            padding: 30px;
+            margin: auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #999;
+        }
+        .container1{
+      background-color: rgba(74, 190, 136, 0.692);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size:large;
+      width: 100vw;
+      height: 80px;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+        a {
+            text-decoration: none;
+            color: #0000ee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+    <Header>
+    <h1 style="color:#f6f7f6"> Gene Variant Finder</h1>
+  </Header>
+  </div>
+    <div class="error-box">
+        <h2>Error</h2>
+        <p>{{ message }}</p>
+        <a href="/">← Go Back</a>
+    </div>
+</body>
+</html>

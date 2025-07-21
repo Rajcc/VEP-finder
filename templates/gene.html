@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Mutagen </title>
+
+  <style>
+    /* Set background image and center the body */
+    body {
+      margin: 0;
+      padding: 0;
+      /* background-image: url("dna.jpg"); */
+      background-size: cover;
+      background-position: center;
+      /* display: grid; */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container to hold all content */
+    .container1{
+      background-color: rgba(74, 190, 136, 0.692);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size:large;
+      width: 100vw;
+      height: 80px;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .container2 {
+      background-color: rgba(255, 255, 255, 0.9); /* Slight white overlay */
+      padding: 30px;
+      border-radius: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      width: 50%;
+      margin-top: 50px;
+      margin-left: 400px;
+      border:3px solid black;
+      
+    }
+    .container3 {
+      background-color: rgba(255, 255, 255, 0.9); /* Slight white overlay */
+      padding: 30px;
+      border-radius: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      width: 50%;
+      margin-top: 50px;
+      margin-left: 400px;
+      border:3px solid black;
+      
+    }
+      .divider {
+      display: flex;
+      align-items: center;
+      margin: 2rem 0;
+      color: #a0aec0;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .input {
+      margin: 0 auto;
+      background-color: #f6f7f6;
+      border-radius: 20px;
+      width: 300px;
+      height: 50px;
+      padding: 10px;
+      font-size: 16px;
+      text-align:left;
+      font-family: 'Courier New', monospace;
+      
+      
+    }
+   
+
+    select, button {
+      width: 320px;
+      height: 50px;
+      border-radius: 10px;
+      font-size: 16px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    button {
+      background-color:  #48c9b0;    
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    p {
+      max-width: 600px;
+      word-wrap: break-word;
+    }
+
+    .result-box {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 18px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      
+    }
+      .scroll-input {
+       margin: 0 auto;
+      background-color: #f6f7f6;
+      border-radius: 20px;
+      width: 350px;
+      height: 80px;
+      padding: 10px;
+      font-size: 16px;
+      text-align:left;
+      font-family: 'Courier New', monospace;/* Monospaced font for DNA */
+      line-height: 1.5;
+      resize: vertical;           /* Let user resize vertically if needed */
+      overflow-y: auto;           /* Show vertical scrollbar when needed */
+      overflow-x: hidden;         /* Prevent sideways scrolling */
+      white-space: pre-wrap;      /* Wrap long lines */
+      word-wrap: break-word;
+          /* Break long DNA strings properly */
+    }
+    
+
+  </style>
+</head>
+
+<div>
+  <div class="container1">
+    <Header>
+    <h1 style="color:#f6f7f6"> Gene Variant Finder</h1>
+  </Header>
+  </div>
+  
+  <div class="container2">
+    <form method="POST" action="/gene">
+      <input type="text" id="enter" name="enter" class="input" placeholder="Enter your gene e.g,barca1">
+
+      <label for="cas_systems">
+        <p style="font-size: medium;">Select species:</p>
+      </label>
+      <select id="cas" name="cas">
+        <option value="">--Choose System--</option>
+        <option value="Homo_sapiens">Homo_sapiens</option>
+        <option value="Mus_musculus">Mus_musculus</option>
+        <option value="rattus_norvegicus">rattus_norvegicus</option>
+        <option value="	gallus_gallus">	gallus_gallus</option>
+        <option value="	xenopus_tropicalis">	xenopus_tropicalis</option>
+      </select>
+      <button type="submit">submit</button>
+      </form>
+   
+  </div>
+
+  <div class="divider">
+      <span>OR</span>
+    </div>
+
+  
+     
+   <div class="container3">
+      <form method="POST" action="/gene2">
+        <h1>Enter unknown DNA sequence</h1>
+      <input type="text" id="enter2" name="enter2" class="scroll-input" placeholder="e.g,  >TestGene homo sapiens ATGTGTATTTAT" required>
+      <button type="submit">Analyze</button>
+    </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

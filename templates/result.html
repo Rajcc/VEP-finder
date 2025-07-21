@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container1{
+      background-color: rgba(74, 190, 136, 0.692);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size:large;
+      width: 100vw;
+      height: 80px;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .result-box {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 900px;
+      background-color: rgba(126, 118, 126, 0);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      font-family: monospace;
+      border:3px solid black;
+    }
+    
+
+    h2,h3{
+      margin-top: 10px;
+      margin-bottom: 6px;
+      font-size: 20px;
+      
+    }
+    table{
+      width: 100%;
+      border-collapse:collapse;
+      margin-top: 10px;
+    }
+    th,td{
+      padding: 8px,15px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      
+    }
+    
+p, ul {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0;
+  margin:0;
+  padding-left: 20px;
+}
+
+ul {
+  list-style-position: inside;
+  text-align: center;
+   line-height: 0.5; /* Reduce vertical space between lines */
+}
+cl {
+  list-style-position: inside;
+  text-align: center;
+   
+}
+.output-box {
+      display:flex;
+  border: 3px solid black;
+   margin: 20px auto 10px auto;
+  padding: 6px;
+  margin-bottom: 10px;
+  /* width: fit-content; */
+  font-family: Arial, sans-serif;
+  border-radius: 15px;
+  background-color: aliceblue;
+  margin-top: 10px;
+  width:500px;
+  font-size: 20px;
+  height:50px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container1">
+    <Header>
+    <h1 style="color:#f6f7f6"> Gene Variant Finder</h1>
+  </Header>
+  </div>
+  <div class="result-box">
+    <div class="output-box">
+    <h1>Result for {{ enter }}</h1>
+    </div>
+    <h2>VEP Predictions</h2>
+<table>
+  <tr><th>Variant ID</th>  <th>Position</th>  <th>Consequence</th>  <th>Impact</th>  <th>Gene</th></tr>
+  {% for v in vep_results %}
+  <tr>
+    <td>{{ v.id }}</td>
+    <td>{{ v.position }}</td>
+    <td>{{ v.consequence }}</td>
+    <td>{{ v.impact }}</td>
+    <td>{{ v.gene }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>Disease related to the variants</h2>
+<cl>
+  {%if clinvar_results %}
+
+  {% for c in clinvar_results %}
+  <li><a href="{{ c.clinvar_link }}" target="_blank">{{ c.id }}</a></li>
+  {% endfor %}
+  {% else %}
+  <li>No Disease links found for the gene variants likely Due to variants are of low significance or rarely reported </li>
+  {%endif%}
+</cl>
+    {% if sequence %}
+      
+      <h2>Gene details </h2>
+      
+      <ul style="text-align: left;">
+        <li style="margin: 2px 0;"><strong>Chromosome:</strong>{{chromosome}}</li>
+        <li style="margin: 2px 0;"><strong>Start position:</strong>{{start }}</li>
+        <li style="margin: 2px 0;"><strong>End position:</strong>{{end }}</li>
+        <li style="margin: 2px 0;"><strong>Strand:</strong>{{strand}}</li>
+      </ul>
+     
+      <h3>Fasta sequence </h3>
+      <pre>{{ sequence }}</pre>
+    {% else %}
+      <h1>No result found</h1>
+    {% endif %}
+    
+  </div>
+</body>
+</html>
